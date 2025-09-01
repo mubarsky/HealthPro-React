@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import styles from "./Navbar.module.css";
+import styles from "./navbar.module.css";
 import { NavbarData, NavbarData2 } from "../../../utils/data";
 
 const Navbar = () => {
