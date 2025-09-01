@@ -1,0 +1,106 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background: #2a78c2;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  padding-top: 1rem;
+}
+.logo img {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+/* Desktop nav */
+.navLists {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navItem a:hover {
+  color: #ffdd57;
+}
+
+.authWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.authWrapper a {
+  background: white;
+  color: #2a78c2;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.authWrapper a:hover {
+  background: #ffdd57;
+  color: black;
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 768px) {
+  .navLists {
+  position: fixed; /* stick it to screen, not hidden behind */
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: center;
+  width: 260px;
+  background: #2a78c2;
+  padding-top: 6rem;
+  gap: 1.5rem;
+  height: 100vh;
+  transform: translateX(100%); /* completely off-screen */
+  transition: transform 0.3s ease-in-out;
+  z-index: 999; /* sits above content */
+}
+
+.navLists.active {
+  transform: translateX(0); /* slide into view */
+}
+
+
+  .navLists.active {
+    transform: translateX(0);
+  }
+
+  .authWrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

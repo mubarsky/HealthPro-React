@@ -1,0 +1,55 @@
+.thirdContainer {
+  display: flex;
+  align-items: stretch; /* ✅ makes both sides equal height */
+  gap: 2rem;
+  margin: 0 1rem;
+  margin-top: 5rem;
+}
+
+.thirdLeft,
+.thirdRight {
+  flex: 1; /* ✅ both take equal space */
+}
+
+.thirdLeft img {
+  width: 100%;   /* ✅ full width of its column */
+  height: 100%;  /* ✅ match height with text column */
+  object-fit: cover; /* ✅ crop instead of squishing */
+  border-radius: 8px;
+}
+
+.thirdRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ✅ center text vertically */
+  padding: 2rem;
+}
+
+.rightTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.rightTexts h2 {
+  font-size: 2rem;
+}
+
+.thirdRight button {
+  padding: 10px 20px;
+  border-radius: 9px;
+  border: none;
+  background-color: #2a78c2;
+  color: white;
+  font-weight: bold;
+  max-width: fit-content;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thirdRight button:hover {
+  transform: scale(1.1);
+}
+

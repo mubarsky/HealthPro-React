@@ -1,0 +1,33 @@
+.secondContainer {
+  position: relative;
+  background-image: url("/images/smiling-doctor-2.jpg"); /* ✅ make sure this path works in your public folder */
+  background-size: cover;
+  background-position: top;
+  height: 90vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.021), rgba(0, 0, 0, 0.655));
+  z-index: 1;
+}
+
+.overlayText {
+  position: absolute; 
+  bottom: 30px;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  width: 90%;
+  left: 70px;
+}
+
+.overlayText h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+}

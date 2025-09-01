@@ -1,0 +1,146 @@
+.otpContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Left side */
+.leftOtp {
+  flex: 1;
+  position: relative;
+  background: url("/images/doctor-4303018.jpg") no-repeat center center/cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.overlayText {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+/* Right side */
+.rightOtp {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.content {
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rightLogo img {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* OTP input boxes */
+.otpInputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.otpBox {
+  width: 3rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.otpBox:focus {
+  outline: none;
+  border-color: rgb(108, 108, 234);
+}
+
+.btn {
+  margin-top: 1.2rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: rgb(108, 108, 234);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgb(80, 80, 210);
+}
+
+.resend {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.resend span {
+  color: rgb(108, 108, 234);
+  cursor: pointer;
+}
+.toLogin{
+    color: rgb(108, 108, 234);
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .otpContainer {
+    flex-direction: column;
+  }
+
+  .leftOtp {
+    height: 40vh;
+  }
+
+  .rightOtp {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .otpInputs {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .otpBox {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+}

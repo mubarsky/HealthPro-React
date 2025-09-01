@@ -1,0 +1,275 @@
+.logInContainer {
+  display: flex;
+}
+
+.leftContainer {
+  flex: 2;
+  position: relative;
+  background-image: url(/images/signi-in-background-4.jpg);
+  background-size: cover;
+  background-position: top;
+  height: 110vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.overlayText {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 50%;
+  left: 15%;
+  font-weight: bold;
+  z-index: 2;
+}
+.overlayText h1 {
+  font-size: 1.7rem;
+  color: white;
+}
+
+.rightContainer {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  color: #444444;
+}
+
+.rightLogo img {
+  width: fit-content;
+  height: 40px;
+  
+}
+
+.right1 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 1rem;
+  /* margin-bottom: 1rem; */
+}
+
+.goBack {
+  margin: 1rem 0;
+  margin-left: 1rem;
+}
+
+.goBack a {
+  text-decoration: none;
+ color: rgb(104, 104, 234);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.goBack a:hover {
+  color: #1a5ba0;
+}
+.right1 p {
+  font-size: 1.2rem;
+}
+.right1Inner {
+  display: flex;
+  gap: 3px;
+}
+.right1Inner p {
+  font-size: 1.1rem;
+}
+
+.form {
+  display: flex;
+  gap: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form1 {
+  flex: 1;
+}
+.form1 p {
+  padding-bottom: 7px;
+}
+.form1 input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px; 
+  border: solid 1.3px #b9b7b7;
+
+}
+input[type="checkbox"] {
+  accent-color: #1e88e5;
+}
+.form1 input::placeholder {
+  font-size: 0.8rem;
+  padding-left: 0;
+}
+
+.form3 {
+  display: flex;
+  gap: 5px;
+  margin-left: 1rem;
+}
+.form3 div {
+  display: flex;
+  gap: 3px;
+}
+
+.btns {
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 1rem;
+ 
+}
+.btns div {
+  display: flex;
+  gap: 3px;
+}
+.btns button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn2 {
+  background-color: #2a78c2;
+  color: white;
+  border-radius: 5px;
+   cursor: pointer;
+}
+
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* space for the button */
+  border-radius: 5px;
+  border: solid 1.3px #b9b7b7;
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.toggleBtn:focus {
+  outline: none;
+} 
+
+
+
+/* ================= RESPONSIVENESS ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .logInContainer {
+    flex-direction: column-reverse;
+  }
+
+  .leftContainer {
+    height: 40vh;
+    flex: none;
+    background-position: center;
+  }
+
+  .overlayText {
+    font-size: 1.3rem;
+    top: 40%;
+    left: 10%;
+  }
+
+  .rightContainer {
+    flex: none;
+    padding: 2rem 1rem;
+  }
+
+  .content {
+    width: 95%;
+  }
+
+  .form {
+    flex-direction: column; /* stack form inputs */
+    gap: 1rem;
+    margin-left: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .overlayText h1 {
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+  }
+
+  .right1 {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .btns button {
+    width: 100%;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 480px) {
+  .goBack {
+    margin-left: 0;
+  }
+  .overlayText {
+    font-size: 1rem;
+    text-align: center;
+    left: 0;
+    right: 0;
+    padding: 0 1rem;
+  }
+
+  .rightLogo img {
+    height: 30px;
+  }
+
+  .btns div {
+    flex-direction: column;
+    text-align: center;
+  }
+}

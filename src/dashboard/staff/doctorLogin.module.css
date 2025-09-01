@@ -1,0 +1,330 @@
+.loginContainer{
+  display: flex;
+  height: 100vh;
+}
+
+
+.leftLogin {
+  flex: 1;
+  position: relative;
+  background-image: url(/images/sign-in-background.jpg);
+  background-size: cover;
+  background-position: top;
+
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.overlayText {
+    position: absolute;
+  top: 50%;          /* push halfway down */
+  left: 50%;         /* push halfway right */
+  transform: translate(-50%, -50%); /* pull it back by half its size */
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;    
+  width: 90%;
+ /* position: absolute;
+  top: 50%;
+  font-weight: bold;
+  z-index: 1;   */
+}
+.overlayText h1 {
+  font-size: 1.7rem;
+  color: white;
+}
+
+
+
+
+
+
+.rightLogin{
+flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  height: 80%;
+  color: #444444;
+  padding-top: 2rem;
+}
+
+.rightLogo img{
+  width: fit-content;
+  height: 40px;
+  margin-bottom: 2rem;
+}
+
+.right1 {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 1rem;
+}
+
+.goBack {
+  margin: 1rem 0;
+  margin-left: 1rem;
+}
+
+.goBack a {
+  text-decoration: none;
+ color: rgb(104, 104, 234);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.goBack a:hover {
+  color: #1a5ba0;
+}
+
+.right2 {
+  font-size: 1.1rem;
+  display: flex;
+  gap: 10px;
+  padding-left: 1rem;
+}
+
+.signInTopButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.topButton1 button {
+  padding: 10px 20px;
+  border-top-left-radius: 9px;
+  border: none;
+ 
+  color: black;
+  font-weight: bold;
+}
+
+.topButton1 button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.topButton2 button {
+  padding: 10px 20px;
+  border: none;
+  color: white;
+   background-color: #2a78c2;
+  font-weight: bold;
+}
+
+.topButton2 button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.topButton3 button {
+  padding: 10px 20px;
+  border-top-right-radius: 9px;
+  border: none;
+  
+  color: black;
+  font-weight: bold;
+}
+
+.topButton3 button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  gap: 2rem;
+  border-top: 1px solid #b9b7b7;
+  padding-top: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form1 {
+  flex: 1;
+  font-size: 1.1rem;
+}
+
+.form1 p {
+  padding-bottom: 7px;
+}
+
+.form1 input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1.3px #b9b7b7;
+}
+
+input[type="checkbox"] {
+  accent-color: #1e88e5;
+}
+
+.form1 input::placeholder {
+  padding-left: 0;
+  font-size: 1rem;
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* space for the button */
+  border-radius: 5px;
+  border: solid 1.3px #b9b7b7;
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+
+.form3 {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid #b9b7b7;
+  padding-bottom: 2rem;
+  margin-left: 1rem;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+
+}
+
+.btns button {
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+    cursor: pointer;
+}
+
+.btn1 {
+  color: #2a78c2;
+  background-color: white;
+}
+
+.btn2 {
+  background-color: #2a78c2;
+  color: white;
+  border-radius: 5px;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 1024px) {
+  .content {
+    width: 90%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column; /* stack left and right */
+    height: auto;
+  }
+
+  .leftLogin {
+    height: 40vh; /* smaller banner */
+    flex: none;
+  }
+
+  .overlayText h1 {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  .rightLogin {
+    flex: none;
+    padding: 2rem 1rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .content {
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .form {
+    flex-direction: column; /* stack inputs */
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .form3 {
+    margin-left: 0;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btns button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+    .goBack {
+    margin-left: 0;
+  }
+  .overlayText h1 {
+    font-size: 1rem;
+  }
+
+  .right1 {
+    font-size: 1rem;
+    padding-left: 0;
+  }
+
+  .right2 {
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 0;
+  }
+
+  .signInTopButton {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .topButton1 button,
+  .topButton2 button,
+  .topButton3 button {
+    width: 100%;
+    text-align: center;
+  }
+}
