@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "./AdminLogin.module.css";
+import styles from "./adminLogin.module.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
