@@ -1,7 +1,7 @@
 // src/dashboard/patient/pages/PatientHome.jsx
 import React from "react";
 import DashboardLayout from "../../DashboardLayout";
-import styles from "./PatientHome.module.css";
+import styles from "./patientHome.module.css";
 
 const PatientHome = () => {
   return (
