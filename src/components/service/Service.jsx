@@ -21,7 +21,7 @@ const Service = () => {
       <section className={styles.serviceContainer}>
         <div className={styles.serviceCard}>
           <div className={styles.serviceImg}>
-            <img src="../../../public/images/find-a-doctor-card.jpg" alt="" />
+            <img src="/images/find-a-doctor-card.jpg" alt="" />
           </div>
           <div className={styles.serviceDesc}>
             <h2>Our Providers</h2>

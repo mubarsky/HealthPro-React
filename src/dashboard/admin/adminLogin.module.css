@@ -61,12 +61,12 @@ flex: 2;
 
 }
 
-.rightLogo img{
-  width: fit-content;
-  height: 40px;
- 
+ .rightLogo img {
+  max-width: 100%;   /* ✅ prevents overflow */
+  height: auto;      /* ✅ keeps aspect ratio */
+  max-height: 40px;  /* ✅ controls height */
+  object-fit: contain; /* ✅ ensures it doesn’t stretch */
 }
-
 .right1 {
   font-size: 1.3rem;
   display: flex;
