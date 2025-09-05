@@ -1,27 +1,28 @@
+/* ✅ Base layout (desktop & large screens) */
 .thirdContainer {
   display: flex;
-  align-items: stretch; /* ✅ makes both sides equal height */
+  align-items: stretch;
   gap: 2rem;
   margin: 0 1rem;
-  margin-top: 5rem;
+  margin-top: 8rem;
 }
 
 .thirdLeft,
 .thirdRight {
-  flex: 1; /* ✅ both take equal space */
+  flex: 1;
 }
 
 .thirdLeft img {
-  width: 100%;   /* ✅ full width of its column */
-  height: 100%;  /* ✅ match height with text column */
-  object-fit: cover; /* ✅ crop instead of squishing */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
 }
 
 .thirdRight {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ✅ center text vertically */
+  justify-content: center;
   padding: 2rem;
 }
 
@@ -47,9 +48,65 @@
   max-width: fit-content;
   cursor: pointer;
   transition: transform 0.2s ease;
+  margin-top: 3rem;
 }
 
 .thirdRight button:hover {
   transform: scale(1.1);
 }
 
+/* ✅ Tablet screens */
+@media (max-width: 992px) {
+  .thirdContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .thirdRight {
+    padding: 1.5rem;
+    align-items: center;
+  }
+
+  .rightTexts {
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+  }
+
+  .rightTexts h2 {
+    font-size: 1.8rem;
+  }
+
+  .thirdRight button {
+    margin-top: 1rem;
+  }
+}
+
+/* ✅ Mobile screens */
+@media (max-width: 600px) {
+  .thirdContainer {
+    gap: 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .thirdLeft img {
+    height: auto; /* prevent image from stretching */
+  }
+
+  .rightTexts {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+
+  .rightTexts h2 {
+    font-size: 1.5rem;
+  }
+
+  .thirdRight {
+    padding: 1rem;
+  }
+
+  .thirdRight button {
+    width: 100%;
+    text-align: center;
+  }
+}

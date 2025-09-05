@@ -1,11 +1,19 @@
-import React, { useState, useRef } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useLocation } from "react-router-dom";
+import React, { useState, useRef,useE} from "react";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./otpVerification.module.css";
 
 const OtpVerification = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const [resendTimer, setResendTimer] = useState(0);
+  
+  const email = localStorage.getItem("email");
 
   const handleChange = (value, index) => {
     if (/[^0-9]/.test(value)) return; // allow only numbers
@@ -26,19 +34,40 @@ const OtpVerification = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const otpCode = otp.join("");
     console.log(otpCode);
 
+   setLoading(true);
     if (otpCode.length < 6) {
-      alert("Please enter all 6 digits");
+      toast.error("Please enter all 6 digits ❌");
       return;
     }
-
-    console.log("OTP entered:", otpCode);
-      alert("OTP verified successfully ✅");
-    navigate("/reset-password"); // next page after verifying
+    try {
+      const res = await fetch(
+        "https://backend-api-zbhj.onrender.com/api/v1/user/verifyotp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({email, otp: otpCode }),
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+         
+        toast.success("Otp verified📩");
+        setTimeout(() => {
+          navigate("/reset-password");
+        }, 1000);
+      } else {
+        toast.error(data.message || "Failed to verify OTP ❌");
+      }
+    } catch (error) {
+      toast.error("Something went wrong, please try again ❌");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -78,8 +107,8 @@ const OtpVerification = () => {
               ))}
             </div>
 
-            <button type="submit" className={styles.btn}>
-              Verify OTP
+            <button type="submit" className={styles.btn} disabled={loading}>
+              {loading ? "Verifying..." : "Verify OTP"}
             </button>
           </form>
           <div>

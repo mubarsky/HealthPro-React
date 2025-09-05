@@ -1,3 +1,6 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { Link } from "react-router-dom";
 import styles from "./login.module.css";
 import React, { useState } from "react";
@@ -8,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // optional: simple error state
   const [error, setError] = useState(null);
@@ -15,33 +19,45 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
-    // Perform login logic here (e.g., API call)
-    // For demonstration, we'll just log the email and password
+    setLoading(true);
+    if (!email || !password) {
+      notify.warning("Please enter both email and password ⚠️");
+      return;
+    }
 
     // prepare data for backend
     const loginData = { email, password };
 
-    navigate("/patient");
+    try {
+      // TODO: replace with your API endpoint
+      const res = await fetch(
+        "https://backend-api-zbhj.onrender.com/api/v1/user/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginData),
+        }
+      );
 
-    // try {
-    //   // TODO: replace with your API endpoint
-    //   const res = await fetch("api/patient/login", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(loginData),
-    //   });
+      const data = await res.json();
 
-    //   const data = await res.json();
-    //   if (res.ok) {
-    //     // Login successful, redirect to patient dashboard
-    //     navigate("/patient");
-    //   } else {
-    //     // Handle login error
-    //     setError(data.message || "Login failed");
-    //   }
-    // } catch (error) {
-    //   setError(error.message);
-    // }
+      if (res.ok) {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+        toast.success("Login successful 🎉");
+        setTimeout(() => {
+          navigate("/patient");
+        }, 1000);
+      } else {
+        toast.error(data.message || "Login failed ❌");
+      }
+      console.log(loginData);
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false); // ✅ reset after success OR failure
+    }
   };
 
   return (
@@ -149,8 +165,12 @@ const Login = () => {
                   <button className={styles.btn1}>Recover Password</button>
                 </Link>
 
-                <button type="submit" className={styles.btn2}>
-                  Login
+                <button
+                  type="submit"
+                  className={styles.btn2}
+                  disabled={loading}
+                >
+                  {loading ? "Logging in..." : "Login"}
                 </button>
               </div>
             </form>

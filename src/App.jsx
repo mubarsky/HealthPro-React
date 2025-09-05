@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -10,7 +12,7 @@ import {
   HealthLibrary,
   Login,
   Register,
-  Service,
+ 
   RecoverPassword,
   OtpVerification,
   ResetPassword,
@@ -18,7 +20,6 @@ import {
 import * as Dashboard from "./dashboard";
 import Layout from "./layout/Layout";
 import AuthLayout from "./authLayout/AuthLayout";
-
 
 const App = () => {
   return (
@@ -32,7 +33,7 @@ const App = () => {
             <Route path="appointment" element={<Appointment />} />
             <Route path="/doctor-page" element={<Doctor />} />
             <Route path="healthlibrary" element={<HealthLibrary />} />
-            <Route path="service" element={<Service />} />
+         
           </Route>
           {/* routes with navbar and footer */}
 
@@ -42,7 +43,7 @@ const App = () => {
             <Route path="/auth/register" element={<Register />} />
             <Route path="/recover-password" element={<RecoverPassword />} />
             <Route path="/otp-verification" element={<OtpVerification />} />
-            <Route path="/reset-password" element={<ResetPassword/>} />
+            <Route path="/reset-password" element={<ResetPassword />} />
             {/* New role-specific logins */}
             <Route
               path="/auth/admin-login"
@@ -92,6 +93,8 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
+
+      <ToastContainer autoClose={3000} newestOnTop closeOnClick />
     </>
   );
 };

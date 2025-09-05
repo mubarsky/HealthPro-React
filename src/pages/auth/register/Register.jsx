@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
 import styles from "./register.module.css";
 import { Link, Navigate } from "react-router-dom";
@@ -5,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -15,8 +18,8 @@ const Register = () => {
     confirmPassword: "",
     terms: false,
   });
-
-    const navigate = useNavigate(); 
+  //  const [message,setMessage]useState="",
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -24,18 +27,43 @@ const Register = () => {
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
+
+   
+
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-     }
+ 
+     setLoading(true);
+    try {
+      const res = await fetch(
+        "https://backend-api-zbhj.onrender.com/api/v1/user/create-user",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData), // ✅ fixed here
+        }
+      );
 
-
-   navigate("/patient");
-
+      const data = await res.json();
+      if (res.ok) {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+        toast.success("Account created successfully 🎉");
+        setTimeout(() => {
+          navigate("/patient");
+        }, 1000);
+      } else {
+        toast.error(data.message || "Account creation failed ❌");
+      }
+      console.log(data); // check server response
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false); // ✅ reset after success OR failure
+    }
   };
 
   return (
@@ -110,8 +138,9 @@ const Register = () => {
               <div className={styles.form1}>
                 <p>Number</p>
                 <input
-                  type="text"
+                  type="tel"
                   name="number"
+                  pattern="[0-9]{10,15}"
                   value={formData.number}
                   onChange={handleChange}
                   required
@@ -130,6 +159,7 @@ const Register = () => {
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Password here..."
+                    autoComplete="password"
                   />
                   <button
                     type="button"
@@ -149,6 +179,7 @@ const Register = () => {
                     value={formData.confirmPassword}
                     onChange={handleChange}
                     placeholder="Repeat Password here..."
+                    autoComplete="password"
                   />
                   <button
                     type="button"
@@ -184,8 +215,8 @@ const Register = () => {
                   <p style={{ color: "rgb(108, 108, 234)" }}>Log In</p>
                 </Link>
               </div>
-              <button type="submit" className={styles.btn2}>
-                Create Account
+              <button type="submit" className={styles.btn2} disabled={loading}>
+                {loading ? "Signing up..." : "Sign up"}
               </button>
             </div>
           </form>

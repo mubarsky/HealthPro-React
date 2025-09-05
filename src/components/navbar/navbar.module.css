@@ -69,7 +69,7 @@
 }
 
 /* 📱 Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 810px) {
   .navLists {
   position: fixed; /* stick it to screen, not hidden behind */
   top: 0;

@@ -1,3 +1,6 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./recoverPassword.module.css";
@@ -5,17 +8,45 @@ import styles from "./recoverPassword.module.css";
 const RecoverPassword = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading]=useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) {
       alert("Please enter your email");
       return;
     }
+    setLoading(true)
+    try {
+      const res = await fetch(
+        "https://backend-api-zbhj.onrender.com/api/v1/user/forgotPassword",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem("email", email);
+        console.log(
+          "localStorage email right now:",
+          localStorage.getItem("email")
+        );
 
-    console.log("Recover password request for:", email);
-      alert("OTP sent to your email ✅");
-    navigate("/otp-verification"); // later will call API
+
+        toast.success("Otp sent to email 📩");
+        setTimeout(() => {
+          navigate("/otp-verification" ,{state:{email}});
+        }, 1000);
+      } else {
+        toast.error(data.message || "Failed to send OTP ❌");
+      }
+    } catch (error) {
+      toast.error("Something went wrong, please try again ❌");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,8 +98,10 @@ const RecoverPassword = () => {
                 </Link>
               </div>
 
-              <button type="submit" className={styles.btn2}>
-                Recover Password
+              <button type="submit" className={styles.btn2} disabled={loading}>
+                {loading ? "Recovering password..." : "Recover Password"}
+          
+
               </button>
             </div>
           </form>

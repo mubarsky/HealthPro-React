@@ -39,7 +39,7 @@ const BiographySection = () => {
         </section>
 
         {/* Navigate with React Router instead of <a href> */}
-        <button onClick={() => navigate("/about")}>Learn more</button>
+        <button  onClick={() => navigate("/AboutPage")}>Learn more</button>
       </section>
     </section>
   );

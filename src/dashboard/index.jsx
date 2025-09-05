@@ -25,5 +25,5 @@ export { default as Records } from "./patient/pages/Records";
 
 export { default as AdminLogin } from "./admin/AdminLogin";
 export {default as DoctorLogin} from "./staff/DoctorLogin";
-export { default as PatientLogin } from "./patient/PatientLogin";
+
 export {default as DoctorRegister} from "./staff/DoctorRegister";

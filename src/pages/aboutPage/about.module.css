@@ -1,30 +1,237 @@
-.aboutContainer {
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+/* ------------ HERO / YEARS (second-container) ------------ */
+.secondContainer {
+  position: relative;
+  background-image: url(/images/who-we-are.jpg);
+   background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  height: 100vh;             
+  display: flex;
+  align-items: center; 
+}
+
+.secondContainer .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.6)
+  );
+}
+
+.overlayText {
+  position: relative;            /* sits above overlay */
+  z-index: 2;
+  width: min(1100px, 92%);
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
   text-align: center;
+  color: #fff;
 }
 
-.heading {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #2a78c2; /* hospital blue */
-  margin-bottom: 1.5rem;
+.years {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
 }
 
-.text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #444;
+.years1 h1 {
+  font-size: clamp(4rem, 14vw, 10rem);
+  line-height: 0.9;
+  font-weight: 800;
+}
+
+.years2 p:first-child {
+  font-size: clamp(1.25rem, 5vw, 3rem);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  padding-bottom: 0.25rem;
+  letter-spacing: 0.12em;
+}
+
+.years2 p:last-child {
+  font-size: clamp(0.9rem, 2.6vw, 1.5rem);
+  margin-top: 0.35rem;
+  opacity: 0.95;
+}
+
+/* ------------ HISTORY (third-container) ------------ */
+.thirdContainer {
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem) 1rem 5rem;
+  gap: 1rem;
+}
+
+.history {
+  width: min(1000px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  line-height: 1.15;
+}
+
+.history h2 {
+  margin-top: 1rem;
+  font-size: clamp(1.4rem, 4vw, 2.5rem);
+}
+
+.history p {
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  line-height: 1.85;
+  opacity: 0.95;
+}
+
+/* ------------ AWARDS (fifth-section) ------------ */
+.fifthSection {
+  width: min(1100px, 92%);
+  margin: 3rem auto;
+}
+
+.fifthSection h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  margin-bottom: 2.25rem;
+}
+
+.award,
+.awards {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.75rem 1.25rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e1e1e1;
+}
+
+.award:last-of-type {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.award h2,
+.awards h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+.awardee,
+.awardee2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  padding: 0;
+}
+
+/* Your global CSS removes bullets; recreate them visually */
+.awardee li,
+.awardee2 li {
+  position: relative;
+  padding-left: 1rem;
+  font-weight: 600;
+}
+
+.awardee li::before,
+.awardee2 li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ------------ POLICY (sixth-section) ------------ */
+.sixthSection {
+  width: min(1100px, 92%);
+  margin: 3rem auto;
+}
+
+.sixthSection h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  margin-bottom: 1.25rem;
+}
+
+.policy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.highlight {
-  font-weight: bold;
-  color: #28a745; /* green highlight */
+.policy p {
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  line-height: 1.85;
+  max-width: 70ch;
 }
 
-.inProgress {
+.policyList {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+
+/* bullets for .policy-list since <li> are inside a div */
+.policyList li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  max-width: 70ch;
+}
+.policyList p{
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #d9534f; /* red warning */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.policyList li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ------------ RESPONSIVE TWEAKS ------------ */
+@media (max-width: 900px) {
+  .overlay-text {
+    justify-content: center;
+  }
+  .years {
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .second-container {
+    align-items: flex-end;      /* put the text a bit lower on small screens */
+    padding-bottom: 2rem;
+  }
+
+  .overlay-text {
+    width: 92%;
+  }
+
+  .years {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .years-2 p:first-child {
+    border-bottom: none;
+    letter-spacing: 0.08em;
+  }
+
+  .award,
+  .awards {
+    grid-template-columns: 1fr;
+  }
+
+  .history {
+    width: 92%;
+  }
 }

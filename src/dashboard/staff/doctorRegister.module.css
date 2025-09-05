@@ -8,7 +8,7 @@
   background-image: url(/images/signi-in-background-4.jpg);
   background-size: cover;
   background-position: top;
-  height: 110vh;
+  /* height: 100vh; */
 }
 
 .overlay {
@@ -40,6 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem;
 }
 
 .content {

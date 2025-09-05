@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./resetPassword.module.css";
 import { useNavigate,Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,7 +10,8 @@ const ResetPassword = () => {
     password: "",
     confirmPassword: "",
   });
-
+ const [loading,setLoading]= useState(false)
+  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,14 +19,55 @@ const ResetPassword = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const email = localStorage.getItem("email");
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-    alert("Password reset successfully ✅");
-    navigate("/auth/login"); // go back to login after reset
+    
+    if (!email) {
+      toast.error("No email found, please restart the reset process ❌");
+      navigate("/recover-password");
+      return;
+    }
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters ❌");
+      return;
+    }
+    setLoading(true)
+    try {
+      
+      const res = await fetch(
+        "https://backend-api-zbhj.onrender.com/api/v1/user/reset-password",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, newPassword: formData.password }),
+        }
+      );
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.removeItem("email");
+        toast.success("Password reset successful ✅");
+        setTimeout(() => {
+          navigate("/auth/login"); // ✅ better to go login after reset
+        }, 1000);
+      } else {
+        toast.error(data.message || "Failed to reset password ❌");
+      }
+    } catch (error) {
+      toast.error("Something went wrong, please try again ❌");
+    } finally {
+      setLoading(false);
+    }
+
+    
+
+     
   };
 
   return (
@@ -86,8 +129,8 @@ const ResetPassword = () => {
               </div>
             </div>
 
-            <button type="submit" className={styles.submitBtn}>
-              Reset Password
+            <button type="submit" className={styles.submitBtn} disabled={loading}>
+            {loading ? "Resetting Password..." : "Reset Password"}
             </button>
           </form>
           <Link to="/auth/login">

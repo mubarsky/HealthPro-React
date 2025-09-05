@@ -1,3 +1,254 @@
+/* Hero container */
+.secondContainer {
+  display: flex;
+  align-items: stretch;
+  margin: 4rem;
+}
+
+.leftContainer {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.leftContainer img {
+  max-width: 100%;
+  max-height: 100%;       
+  object-fit: cover;  
+  display: block;     
+}
+
+.leftContainer button:hover {
+  transform: scale(1.1);
+}
+
+.rightContainer {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #ddedfa;
+  padding: 0 2rem;
+  
+ 
+}
+
+.rightDiv1 h1 {
+  font-size: 3.5rem;
+}
+
+.rightContainerBtn {
+  display: flex;
+  gap: 1rem;
+}
+
+.rightContainerBtn button {
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.rightBtn1 {
+  background-color: #2a78c2;
+  color: white;
+  border: none;
+}
+
+.rightBtn1:hover {
+  background-color: #114779;
+}
+
+.rightBtn2 {
+  background-color: white;
+  color: #2a78c2;
+  border: solid 1px #2a78c2;
+}
+
+.rightBtn2:hover {
+  color: #1b5389;
+}
+
+.request {
+  font-weight: bold;
+}
+
+.request h1 {
+  font-size: 1.3rem;
+}
+
+/* Middle container */
+.middleContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8rem;
+}
+
+.middleContainer p {
+  font-size: 2.5rem;
+  color: #444343e0;
+  line-height: 3rem;
+  width: 80%;
+  
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .secondContainer {
+    flex-direction: column;
+    margin: 2rem;
+   
+  }
+
+.rightContainer{
+  padding: 3rem;
+}
+  .rightDiv1 h1 {
+    font-size: 2.5rem;
+  }
+
+  .middleContainer p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+@media (max-width: 660px){
+  .rightContainerBtn{
+    flex-direction: column;
+  }
+}
+@media (max-width: 700px){
+  .rightContainerBtn button {
+  padding: 15px 20px;
+}
+.rightContainer{
+  padding: 2rem 1rem;
+}
+}
+@media (max-width: 430px){
+  .rightContainerBtn button {
+  padding: 10px 10px;
+  font-size: 15px;
+}
+.rightDiv1 h1 {
+  font-size: 2rem;
+  align-items: center;
+  text-align: center;
+}
+}
+
+.connectWithUsContainer {
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+.connectWithUsContainer h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.connectWithUs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.connectCard {
+  flex: 1 1 calc(33.333% - 1.5rem); /* 3 per row on desktop */
+  min-width: 280px; /* prevents too small shrink */
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.connectCard:hover {
+  transform: translateY(-5px);
+}
+
+.connectCardImg img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.connectCardDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem;
+}
+
+.connectCardDesc h1 {
+  color: #2a78c2;
+  font-size: 1.5rem;
+}
+
+.connectCardDesc p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 📱 Responsive Breakpoints */
+@media (max-width: 900px) {
+  .connectCard {
+    flex: 1 1 calc(50% - 1.5rem); /* 2 per row on tablet */
+  }
+
+  .connectCardImg img {
+    height: 180px;
+  }
+
+  .connectCardDesc h1 {
+    font-size: 1.3rem;
+  }
+
+  .connectCardDesc p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .connectCard {
+    flex: 1 1 100%; /* 1 per row on mobile */
+  }
+
+  .connectCardImg img {
+    height: 160px;
+  }
+
+  .connectCardDesc h1 {
+    font-size: 1.2rem;
+  }
+
+  .connectCardDesc p {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* .connectWithUsContainer end */
+
+
+
+
+
+
+
+
+
+
 .appointmentContainer {
   padding: 3rem 2rem;
   max-width: 600px;

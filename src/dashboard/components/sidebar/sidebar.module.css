@@ -1,42 +1,139 @@
+.sidebarAndBoard {
+  display: flex;
+}
+
 .sidebar {
-  position: sticky;
-  top: 0;
+
+  position: fixed;     /* so it sticks to the left */
+  top: 0;              /* start from very top */
+  left: 0;
+  height: 100vh;       /* full screen height */
+  width: 230px;        /* keep your width */
   background-color: #2c3e50;
   color: white;
-  height: 100vh;
-  transition: width 0.3s ease;
   overflow-y: auto;
-  padding-top: 1rem;
-}
 
-.sidebar.full {
+  /* align-items: flex-start;
+  justify-content: flex-start;
+  position: sticky;
+  top: 4rem;
+  max-height: 89.5vh;
+  background-color: #2c3e50;
+  color: white;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: width 0.3s ease, padding 0.3s ease;
   width: 230px;
+  z-index: 10;
+  overflow-y: auto; */
 }
 
-.sidebar.mini {
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background-color: white;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #516475;
+  border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #94a5b7;
+  cursor: pointer;
+}
+
+.sideBarList {
+  padding: 1rem;
+}
+.sideBarList li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.sideBarList li:hover {
+  background-color: #61829f;
+}
+
+/* Mini mode */
+.showMini {
   width: 80px;
+  padding: 10px 0;
+}
+
+/* Hover to expand */
+.hovered {
+  width: 250px;
+  padding: 10px;
+}
+
+.sidebarMini {
+  opacity: 1;
+  text-align: center;
+  padding-top: 2rem;
+}
+.sidebarMini div {
+  margin-bottom: 2rem;
+}
+
+.sidebarFull,
+.sidebarMini {
+  transition: opacity 0.2s ease;
+}
+
+/* Hidden states */
+.sidebarFull,
+.sidebarMini {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show full */
+.showFull .sidebarFull {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+.showFull .sidebarMini {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show mini */
+.showMini .sidebarMini {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+.showMini .sidebarFull {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mini on hover expanded */
+.showMini.hovered .sidebarFull {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+.showMini.hovered .sidebarMini {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .toggleBtn {
-  background: none;
-  border: none;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background: #2a78c2;
   color: white;
-  font-size: 1.5rem;
-  margin: 1rem;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
-
-.list {
-  list-style: none;
-  padding: 0;
-}
-
-.list li {
-  padding: 1rem;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.list li:hover {
-  background-color: #61829f;
+.toggleBtn:hover {
+  background: #1a5a96;
 }
